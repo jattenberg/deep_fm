@@ -22,4 +22,4 @@ echo "===================="
 
 
 echo "being by activating the virtualenv or running:"
-echo "`$venv/bin/jupyter notebook`
+echo "$venv/bin/jupyter notebook"
