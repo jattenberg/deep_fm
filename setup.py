@@ -6,7 +6,7 @@ required_libraries = [
     "html2text",
     "jupyter",
     "matplotlib",
-    "numpy==1.18.5",
+    "numpy==1.22.0",
     "pandas",
     "python-dateutil",
     "requests",
