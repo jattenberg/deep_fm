@@ -1,20 +1,10 @@
 from setuptools import setup
+import pathlib
+import pkg_resources
 
 required_libraries = [
-    "beautifulsoup4",
-    "faker",
-    "html2text",
-    "jupyter",
-    "matplotlib",
-    "numpy",
-    "pandas",
-    "python-dateutil",
-    "requests",
-    "seaborn",
-    "scikit-learn",
-    "scipy",
-    "six",
-    "tensorflow"
+    str(req)
+    for req in pkg_resources.parse_requirements(pathlib.Path("requirements.txt").open())
 ]
 
 setup(

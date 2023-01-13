@@ -1,0 +1,48 @@
+name: Compile ipynb to html and Deploy to Github Pages
+
+on:
+  workflow_run:
+    workflows: ["Lint"]
+    branches: [main]
+    types:
+      - completed
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  # maybe i should break this out into multiple jobs
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Dependencies
+        run: pip install jupyter jupyter_contrib_nbextensions jupyterlab-miami-nights
+      - name: mkdir
+        run: mkdir -p "./docs"
+      - name: Build
+        run: jupyter nbconvert --to html Wide\ and\ Deep\ Metric\ Nonlinear\ 2-Way\ Factorization\ Machine.ipynb --theme jupyterlab_miami_nights --output="./docs/index.html"
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: "./docs/"
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1

@@ -1,0 +1,10 @@
+black[jupyter]
+jupyter
+matplotlib
+numpy
+pandas
+seaborn
+scikit-learn
+scipy
+six
+tensorflow
