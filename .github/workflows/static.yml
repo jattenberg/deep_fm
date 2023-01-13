@@ -36,7 +36,7 @@ jobs:
       - name: mkdir
         run: mkdir -p "./docs"
       - name: Build
-        run: jupyter nbconvert --to html Wide\ and\ Deep\ Metric\ Nonlinear\ 2-Way\ Factorization\ Machine.ipynb --theme jupyterlab_miami_nights --output="./docs/index.html"
+        run: jupyter nbconvert --to html notebooks/Wide\ and\ Deep\ Metric\ Nonlinear\ 2-Way\ Factorization\ Machine.ipynb --theme jupyterlab_miami_nights --output="./docs/index.html"
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact
